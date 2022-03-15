@@ -9,7 +9,7 @@
 <body>
   <div id="title">
     <transition name="title">
-      <h1 v-show="show" v-on:click="fade">It's Teria</h1>
+      <h1 v-on:click="fade">{{ text }}</h1>
     </transition>
   </div>
   
@@ -17,15 +17,20 @@
     var vm = new Vue({
       el: '#title',
       data: {
-        show: false
+        originText: "It's Teria",
+        index: 0,
+        text: ''
       },
       mounted: function () {
-        setTimeout("vm.$data.show = true", 1000)
+        setInterval(()=>{this.typing()}, 200)
       },
       methods:{
         fade () {
-          this.show = false
-          setTimeout("vm.$data.show = true", 1000)
+          this.index = 0
+          setInterval(()=>{this.typing()}, 200)
+        },
+        typing () {
+          this.text = this.originText.slice(0, this.index++)
         }
       }
     })
