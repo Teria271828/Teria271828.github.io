@@ -9,18 +9,24 @@
 <body>
   <div id="title">
     <transition name="title">
-      <h1 v-if="show">It's Teria</h1>
+      <h1 v-show="show" v-on:click="fade">It's Teria</h1>
     </transition>
   </div>
   
   <script type="text/javascript">
-    new Vue({
+    const vm = new Vue({
       el: '#title',
       data: {
-        show: true
+        show: false
       },
       mounted: function () {
-        this.show = true
+        setTimeout(function(){vm.$data.show = true}, 1000)
+      },
+      methods:{
+        fade () {
+          this.show = false
+          setTimeout(function(){vm.$data.show = true), 1000)
+        }
       }
     })
   </script>
