@@ -20,12 +20,12 @@
         show: false
       },
       mounted: function () {
-        setTimeout(function(){vm.$data.show = true}, 1000)
+        setTimeout("vm.$data.show = true", 1000)
       },
       methods:{
         fade () {
           this.show = false
-          setTimeout(function(){vm.$data.show = true), 1000)
+          setTimeout("vm.$data.show = true", 1000)
         }
       }
     })
