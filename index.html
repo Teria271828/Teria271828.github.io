@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
+    <title>o(=•ェ•=)m</title>
     <meta charset="utf-8"> 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
   </head>
@@ -8,31 +9,46 @@
 
 <body>
   <div id="title">
-    <transition name="title">
-      <h1 v-on:click="fade">{{ text }}</h1>
-    </transition>
+    <transition-group name="title">
+      <span 
+        v-for="(letter, index) in originText" 
+        :key="`idx-${index}`" 
+        v-show="index < shown" 
+        @click="typing"
+      >{{letter}}</span>
+    </transition-group>
   </div>
   
   <script type="text/javascript">
     var vm = new Vue({
       el: '#title',
       data: {
-        originText: "It's Teria",
-        index: 0,
-        text: ''
+        originText: ['I', 't', '\'', 's', ' ', 'T', 'e', 'r', 'i', 'a'],
+        shown: 0,
       },
       mounted() {
-        setInterval(()=>{this.typing()}, 200)
+        this.typing()
       },
       methods:{
-        fade () {
-          this.index = 0
-          setInterval(()=>{this.typing()}, 200)
-        },
         typing () {
-          this.text = this.originText.slice(0, this.index++)
+          this.shown = 0
+          for(let i=0; i<=this.originText.length; i++){
+            setTimeout(()=>{this.shown++}, i*400)
+          }
         }
-      }
+      },
     })
   </script>
+
+  <style scoped>
+    #title{
+      font-size: 50px;
+    }
+    .title-enter-active{
+      transition: opacity 1s;
+    }
+    .title-enter{
+      opacity: 0;
+    }
+  </style>
 </body>
