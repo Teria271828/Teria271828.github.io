@@ -45,3 +45,17 @@ transition可以同时设置过渡相关的所有属性 `transition: margin-left
 #### :hover
 鼠标移到
 
+### flex
+`display: flex`
+`flex-direction: row/row-reverse/column/column-reverse;`
+`flex-grow: 1;` 伸展系数
+`flex-shrink: 1;` 收缩系数
+
+### position
+`static` 默认值  
+`relative` 相对定位  
+`absolute` 绝对定位  
+`fixed` 固定定位  
+`sticky` 粘滞定位  
+
+offset: `top/bottom/left/right: ;`
